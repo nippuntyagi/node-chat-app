@@ -16,7 +16,13 @@ io.on('connection',(socket)=>{
     console.log('New User Connected');
 
     socket.on('createMessage', function(message){
-        io.emit('newMessage', {
+        // io.emit('newMessage', {
+        //     from: message.from,
+        //     text: message.text,
+        //     createdAT: new Date().getTime()
+        // })
+
+        socket.broadcast.emit('newMessage', {
             from: message.from,
             text: message.text,
             createdAT: new Date().getTime()
